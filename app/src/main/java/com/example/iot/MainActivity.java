@@ -53,10 +53,12 @@ public class MainActivity extends AppCompatActivity {
 
     class Item {
         int temp, humidity;
+        Long distance;
         String created_at;
-        Item(int temp, int humidity, String created_at) {
+        Item(int temp, int humidity,Long distance ,String created_at) {
             this.temp = temp;
             this.humidity = humidity;
+            this.distance = distance;
             this.created_at = created_at;
         }
     }
@@ -77,9 +79,11 @@ public class MainActivity extends AppCompatActivity {
             }
             TextView tempText = view.findViewById(R.id.temp);
             TextView humidityText = view.findViewById(R.id.humidity);
+            TextView distanceText = view.findViewById(R.id.distance);
             TextView createdAtText = view.findViewById(R.id.created_at);
-            tempText.setText(items.get(position).temp + "");
-            humidityText.setText(items.get(position).humidity + "");
+            tempText.setText(items.get(position).temp + "도");
+            humidityText.setText(items.get(position).humidity + "%");
+            distanceText.setText(items.get(position).distance+"cm");
             createdAtText.setText(items.get(position).created_at);
             return view;
         }
@@ -124,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             dialog.dismiss();
+
             try {
                 JSONArray array = new JSONArray(s);
                 items.clear();
@@ -131,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject obj = array.getJSONObject(i);
                     items.add(new Item(obj.getInt("tmp"),
                             obj.getInt("hum"),
+                            obj.getLong("distance"),
                             obj.getString("created_at")));
                 }
                 ItemAdapter adapter = new ItemAdapter(MainActivity.this);

@@ -9,19 +9,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#ff0000"
-        android:textSize="25sp"/>
+        android:textSize="15sp"/>
 
     <TextView
         android:id="@+id/humidity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#0000ff"
-        android:textSize="25sp"/>
+        android:textSize="15sp"/>
+    <TextView
+        android:id="@+id/distance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#00ff00"
+        android:textSize="15sp"/>
 
     <TextView
         android:id="@+id/created_at"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
 
 
 </LinearLayout>
